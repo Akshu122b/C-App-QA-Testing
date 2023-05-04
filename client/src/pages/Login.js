@@ -24,7 +24,7 @@ function Login() {
     localStorage.setItem("objectId", objectId)
 
     axios
-      .post("http://localhost:4000/user/login", data)
+      .post("https://qa-server-testing.onrender.com/user/login", data)
       .then((res) => {
         alert("Login Success")
         console.log(res);

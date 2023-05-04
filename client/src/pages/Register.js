@@ -20,7 +20,7 @@ function Register() {
       password: password,
     };
     axios
-      .post("http://localhost:4000/user/signup", data)
+      .post("https://qa-server-testing.onrender.com/user/signup", data)
       .then((res) => {
         alert("Registration is Success")
         console.log(res);

@@ -92,7 +92,7 @@ export default function (props) {
     }
     const config = { headers: { "Content-Type": "application/json" } }
     try {
-      await axios.post('http://localhost:4000/create-event', payload, config);
+      await axios.post('https://qa-server-testing.onrender.com/create-event', payload, config);
       alert("Event is Confirmed");
       window.location.reload();
     } catch (e) {
@@ -107,7 +107,7 @@ export default function (props) {
 
   //Calendar Display
   useEffect(() => {
-    axios.get('http://localhost:4000/get-events')
+    axios.get('https://qa-server-testing.onrender.com/get-events')
       .then((d) => {
         const cdata = d.data.map(item => {
           return { username: item.username, title: item.title, date: item.StartTime, EndTime: item.EndTime, User: item.User }
@@ -133,7 +133,7 @@ export default function (props) {
     const myString = objectId.replace(/^"(.*)"$/, '$1');
     console.log("Hello wolld")
     console.log(myString)
-    axios.get(`http://localhost:4000/getuserevent/${myString}`)
+    axios.get(`https://qa-server-testing.onrender.com/getuserevent/${myString}`)
       .then((d) => {
         setEventData(d.data.events)
         console.log(d)
@@ -169,7 +169,7 @@ export default function (props) {
     }
     console.log(Credentials.StartTime)
     console.log(Credentials.EndTime)
-    axios.put(`http://localhost:4000/update-event/${id}`, Credentials)
+    axios.put(`https://qa-server-testing.onrender.com/update-event/${id}`, Credentials)
       .then((d) => {
 
         setData(d.data)
@@ -183,7 +183,7 @@ export default function (props) {
 
   const handleDelete = () => {
 
-    axios.delete(`http://localhost:4000/delete-event/${id}`)
+    axios.delete(`https://qa-server-testing.onrender.com/delete-event/${id}`)
       .then((d) => {
         setData(d.data)
       })

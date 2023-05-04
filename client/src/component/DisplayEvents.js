@@ -61,7 +61,7 @@ export default function () {
             availability: availability
         }
         const config = { headers: { "Content-Type": "Application/json" } }
-        await axios.post('http://localhost:4000/create-event', payload, config)
+        await axios.post('https://qa-server-testing.onrender.com/create-event', payload, config)
             .then(() => { alert("Event is Confirmed") })
             .catch((e) => { alert("The slot is already booked") })
             // window.location.reload()
@@ -72,7 +72,7 @@ export default function () {
 
 
     useEffect(() => {
-        axios.get('http://localhost:4000/get-events')
+        axios.get('https://qa-server-testing.onrender.com/get-events')
             .then((d) => {
                 const cdata = d.data.map(item => {
                     return { username: item.username, title: item.title, date: item.StartTime }
@@ -90,7 +90,7 @@ export default function () {
     //this api Display Event 
 
     useEffect(() => {
-        axios.get('http://localhost:4000/get-events')
+        axios.get('https://qa-server-testing.onrender.com/get-events')
             .then((d) => {
                 setEventData(d.data)
             })
@@ -102,7 +102,7 @@ export default function () {
     //Update the Event
     const handleEdit = () => {
         const Credentials = { title, roomName, StartTime, EndTime, availability }
-        axios.put(`http://localhost:4000/update-event/${id}`, Credentials)
+        axios.put(`https://qa-server-testing.onrender.com/update-event/${id}`, Credentials)
             .then((d) => {
                 setData(d.data)
             })
@@ -115,7 +115,7 @@ export default function () {
 
     const handleDelete = () => {
 
-        axios.delete(`http://localhost:4000/delete-event/${id}`)
+        axios.delete(`https://qa-server-testing.onrender.com/delete-event/${id}`)
             .then((d) => {
                 setData(d.data)
             })
@@ -306,7 +306,7 @@ export default function () {
                             <div>
                                 <div className='form-group mt-3'>
                                     <label style={{ color: "blue" }}>Select your Room</label>
-                                    <select placeholder="Select Room" required='please Select a room' value={roomName} required onChange={e => setroomName(e.target.value)} defaultValue={RowData.roomName}>
+                                    <select placeholder="Select Room" required='please Select a room' value={roomName} onChange={e => setroomName(e.target.value)} defaultValue={RowData.roomName}>
                                         <option>  </option>
                                         <option>Big Room</option>
                                         <option>Small Room</option>
