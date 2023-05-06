@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-datetime/css/react-datetime.css';
 import NavbarCalendar from '../pages/NavbarCalendar';
 import moment from 'moment-timezone';
+import { useNavigate } from "react-router-dom";
 
 export default function (props) {
 
@@ -93,14 +94,16 @@ export default function (props) {
     const config = { headers: { "Content-Type": "application/json" } }
     try {
       await axios.post('https://qa-server-testing.onrender.com/create-event', payload, config);
-      alert("Event is Confirmed");
-      window.location.reload();
+      alert("Event is Confirmed");  
+      navigate("/Dashboard");
+      // window.location.reload();
     } catch (e) {
       if (e.response.status === 409) {
         alert("The slot is already booked");
       } else {
         alert("The slot is already booked");
-        window.location.reload();
+        navigate("/Calendar");
+        // window.location.reload();
       }
     }
   }
