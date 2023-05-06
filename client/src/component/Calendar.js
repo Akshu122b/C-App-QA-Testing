@@ -23,6 +23,7 @@ export default function (props) {
   const [StartTime, setStartTime] = useState(new Date());
   const [EndTime, setEndTime] = useState(new Date());
   const [availability, setAvailability] = useState(true);
+  const navigate = useNavigate();
 
   const objectId = localStorage.getItem('objectId');
   const userid = objectId.replace(/^"(.*)"$/, '$1');
